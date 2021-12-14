@@ -2,28 +2,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class teste4 {
-	public static void main(String[] args) {
-	
-
-		Scanner sc = new Scanner(System.in);
-		String num = sc.next();
-		ArrayList<String> newList = new ArrayList<>();
+class teste_final {
+ 
+     static Integer getHigherConsecutive(String num) {
+        
+    	ArrayList<String> newList = new ArrayList<>();
 		ArrayList<Integer> list = new ArrayList<>();
 		
 		boolean alreadyExecuted = false;
-	
 		int last = Character.getNumericValue(num.charAt(num.length()-1));
-
 		int first = Character.getNumericValue(num.charAt(0));
 		
 		for (int i = 1; i < num.length()-1; i++) {
 			
-
 			int current = Character.getNumericValue(num.charAt(i));
-
 			int next = Character.getNumericValue(num.charAt(i + 1));
-
 			int previous = Character.getNumericValue(num.charAt(i - 1));
 
 			if (!alreadyExecuted) {
@@ -32,7 +25,7 @@ public class teste4 {
 					alreadyExecuted = true;
 				} 
 			}
-
+			
 			if (current - previous == 1 || next - current == 1) {
 				newList.add(Integer.toString(current));
 			} 
@@ -41,7 +34,6 @@ public class teste4 {
 				newList.add(Integer.toString(current));
 				newList.add(Integer.toString(next));
 			} 
-			
 			
 			else if (i == num.length()-2) {
 				if (last - current == 1) {
@@ -52,8 +44,6 @@ public class teste4 {
 			else { 
 				newList.add("x");
 			}
-			
-			
 		}
 		
 		String str="";
@@ -69,20 +59,24 @@ public class teste4 {
 			if(k.isBlank()) { 
 				continue;
 			}
-			
 			int n = Integer.parseInt(k);
 			list.add(n);
-
 		}
+		return Collections.max(list);
+    }
+ 
+    public static void main(String[] args) {
+    	Scanner sc = new Scanner(System.in);
+		String num = sc.next();
 		
-		System.out.println(Collections.max(list));
+		Integer result = getHigherConsecutive(num);
+		System.out.println(result);
 		
 		sc.close();
-		
-	}
+    }
 }
 
-// test cases
+//test cases
 //53590
 //674030098567819		
-//9012364509789			
+//9012364509789	
