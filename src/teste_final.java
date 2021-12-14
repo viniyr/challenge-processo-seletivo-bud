@@ -62,19 +62,38 @@ class teste_final {
 			int n = Integer.parseInt(k);
 			list.add(n);
 		}
+			
 		return Collections.max(list);
+		
+		
     }
  
     public static void main(String[] args) {
-    	Scanner sc = new Scanner(System.in);
-		String num = sc.next();
+    	
+    	boolean isValid = false;
+
+		while (!isValid) {
+			
+			Scanner sc = new Scanner(System.in);
+	    	System.out.print("Put your number: ");
+			String num = sc.next();
+			
+			if (!num.matches("\\d+") || num.length() <= 2) {
+				
+				System.out.println("Please enter a valid number (Only Numbers and higher than 2 digits)");
+			} else {
+				Integer result = getHigherConsecutive(num);
+				System.out.println("The higher consecutive inside your number is: " + result);
+				sc.close();
+				isValid = true;
+			}
+		}
+			
 		
-		Integer result = getHigherConsecutive(num);
-		System.out.println(result);
 		
-		sc.close();
-    }
-}
+		}
+  }
+
 
 //test cases
 //53590
